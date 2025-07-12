@@ -1,4 +1,4 @@
-@extends('index')
+@extends('app.index')
 
 
 @section('content')

@@ -1,4 +1,4 @@
-@extends('index')
+@extends('app.index')
 
 @section('content')
     <div class="container mt-5">

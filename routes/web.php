@@ -9,11 +9,11 @@ use App\Http\Controllers\BlogController;
 
 
 Route::get('/', function () {
-    return view('home');
+    return view('pages.home');
 })->name('home');
 
 Route::get('/about', function () {
-    return view('about');
+    return view('pages.about');
 })->name('about');
 
 
