@@ -29,6 +29,11 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contactcrt')
 Route::get('/create', [CretpostController::class, 'index'])->name('create');
 Route::post('/create', [CretpostController::class, 'store'])->name('createpost');
 
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login_page');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('reg_page');
+Route::post('/register', [AuthController::class, 'register'])->name('reg');
 
 
 

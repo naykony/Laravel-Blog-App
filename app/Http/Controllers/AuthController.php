@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserRequest;
+
 
 class AuthController extends Controller
 {
@@ -32,26 +35,24 @@ class AuthController extends Controller
     // نمایش فرم ثبت‌نام
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth.reg');
     }
 
     // عملیات ثبت‌نام
-    public function register(Request $request)
+   public function register(UserRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:8',
-        ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+    ]);
 
-        Auth::login($user);
+    // ورود خودکار کاربر پس از ثبت‌نام
 
-        return redirect()->route('home');
-    }
+        // هدایت به صفحه خانگی
+    return redirect()->route('home');
+
+     }
+
 }
