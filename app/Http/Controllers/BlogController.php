@@ -13,7 +13,7 @@ class BlogController extends Controller
     public function index()
     {   
         $posts = Crtpost ::all(); // گرفتن همه پست‌ها
-        return view('blog', compact('posts')); // ارسال پست‌ها به ویو 'home'
+        return view('pages.blog', compact('posts')); // ارسال پست‌ها به ویو 'home'
 
 
         
@@ -41,7 +41,7 @@ class BlogController extends Controller
         }
     
         // ارسال پست به ویو
-        return view('post', compact('post'));
+        return view('pages.post', compact('post'));
 
 
     }
