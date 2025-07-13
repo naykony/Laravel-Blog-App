@@ -33,7 +33,7 @@ class BlogController extends Controller
     public function show($id)
     {
             // پیدا کردن پست بر اساس id
-        $post = Crtpost ::find($id);
+    $post = Crtpost::with('comments.user')->find($id);
     
         // اگر پست پیدا نشد، نمایش خطای 404
         if (!$post) {

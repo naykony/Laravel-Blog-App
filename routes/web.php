@@ -5,16 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CretpostController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
+
+use App\Http\Con;
 
 
+Route::get('/', function () {return view('pages.home');})->name('home');
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
+Route::get('/about', function () {return view('pages.about');})->name('about');
 
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
@@ -36,8 +34,10 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register'])->name('reg');
 
 
+Route::get('/prof', function () {return view('auth.prof');})->name('prof')->middleware('auth');
 
 
+Route::post('/post/{postId}/comment', [CommentController::class, 'store'])->name('comments.store');
 
 
 Route::get('/delete', function () {

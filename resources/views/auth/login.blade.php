@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>ورود به حساب کاربری</h1>
-    <form action="/login" method="POST"> <!-- آدرس و متد را طبق نیاز خود تنظیم کنید -->
+    <form action="{{ route('login') }}" method="POST"> <!-- آدرس و متد را طبق نیاز خود تنظیم کنید -->
+    @csrf
         <div>
             <label for="email">ایمیل</label>
             <input type="email" name="email" id="email" placeholder="ایمیل خود را وارد کنید" required>

@@ -51,7 +51,7 @@ class AuthController extends Controller
     // ورود خودکار کاربر پس از ثبت‌نام
 
         // هدایت به صفحه خانگی
-    return redirect()->route('home');
+    return redirect()->route('login_page');
 
      }
 

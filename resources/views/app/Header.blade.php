@@ -1,4 +1,3 @@
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,6 +14,18 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">تماس با ما</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('create') }}">ساخت</a></li>
 
+                    <!-- نمایش پیام برای کاربر وارد شده -->
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" >تو اکانت هستی</a>
+                        </li>
+                    @endauth
+
+                    <!-- لینک ورود یا ثبت‌نام برای کاربر وارد نشده -->
+                    @guest
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login_page') }}">ورود</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('reg_page') }}">ثبت‌نام</a></li>
+                    @endguest
                 </ul>
             </div>
         </div>
