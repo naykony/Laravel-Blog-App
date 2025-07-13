@@ -10,18 +10,48 @@
             <h4>کامنت‌ها:</h4>
             @foreach ($post->comments as $comment)
                 <div>
-                    <p><strong>{{ $comment->user->name }}</strong>: {{ $comment->comment }}</p>
+                    <p><strong>{{ optional($comment->user)->name ?? 'کاربر ناشناس' }}</strong>: {{ $comment->comment }} (نمره: {{ $comment->rating }})</p>
                 </div>
             @endforeach
         </div>
 
-        <!-- فرم ارسال کامنت فقط برای کاربران وارد شده -->
+        <!-- نمایش خطا یا موفقیت -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- فرم ارسال کامنت و نمره تنها برای کاربران وارد شده -->
         @auth
         <div class="mt-4">
             <h4>نظر خود را بنویسید:</h4>
             <form action="{{ route('comments.store', $post->id) }}" method="POST">
                 @csrf
                 <textarea name="comment" rows="4" placeholder="نظر خود را بنویسید" required class="form-control"></textarea>
+
+                <!-- انتخاب نمره -->
+                <div class="mt-2">
+                    <label for="rating">نمره:</label>
+                    <select name="rating" id="rating" required class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary mt-2">ارسال کامنت</button>
             </form>
         </div>

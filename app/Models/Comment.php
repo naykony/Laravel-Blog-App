@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = [
-        'crtpost_id', 'comment', 'user_id', // اضافه کردن user_id
+        'comment', 'crtpost_id', 'user_id', 'rating'
     ];
 
     // ارتباط با پست
@@ -19,8 +19,6 @@ class Comment extends Model
     // ارتباط با کاربر
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id'); // ارتباط به کاربر
+        return $this->belongsTo(User::class, 'user_id');
     }
-
-    
 }

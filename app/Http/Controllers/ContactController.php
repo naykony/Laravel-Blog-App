@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Http\Requests\ContactRequest;
-use App\Models\Contact;
 
-
-class ContactController extends Controller
+class CommentController extends Controller
 {
-    public function index()
+    public function store(Request $request, $postId)
     {
-        return view('pages.contact');
-    }
-    public function store(ContactRequest $request)
-    {
-        contact::query()->create([
-                'name'=> $request->name,
-                'email'=> $request->email,
-                'dec'=> $request->dec,
+        // اعتبارسنجی ورودی
+        $request->validate([
+            'comment' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5', // اعتبارسنجی نمره
         ]);
-        return back()->with('success', 'ok');
+
+        // ذخیره کامنت و نمره
+        Comment::create([
+            'comment' => $request->comment,
+            'crtpost_id' => $postId,
+            'user_id' => auth()->id(),
+            'rating' => $request->rating, // ذخیره نمره
+        ]);
+
+        // بازگشت به صفحه پست
+        return back();
     }
 }
