@@ -14,7 +14,7 @@ class AuthController extends Controller
     // نمایش فرم ورود
     public function showLoginForm()
     {
-        return view('auth.passwords.login');
+        return view('auth.login');
     }
 
     // عملیات ورود
@@ -35,7 +35,7 @@ class AuthController extends Controller
     // نمایش فرم ثبت‌نام
     public function showRegistrationForm()
     {
-        return view('auth.passwords.reg');
+        return view('auth.reg');
     }
 
     // عملیات ثبت‌نام
