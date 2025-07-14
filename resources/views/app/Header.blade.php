@@ -17,7 +17,15 @@
                     <!-- نمایش پیام برای کاربر وارد شده -->
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" >تو اکانت هستی</a>
+                            <a class="nav-link" href="#">تو اکانت هستی</a>
+                        </li>
+
+                        <!-- فرم برای logout -->
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="nav-link btn btn-link" style="cursor: pointer; text-decoration: none;">خروج</button>
+                            </form>
                         </li>
                     @endauth
 
