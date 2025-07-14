@@ -6,7 +6,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CretpostController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
-use Illuminate\Support\Facades\Auth;
 
 use App\Http\Con;
 
@@ -35,8 +34,12 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register'])->name('reg');
 
 
+<<<<<<< HEAD
 Route::get('/prof', function () {return view('auth.passwords.prof');})->name('prof')->middleware('auth');
 Route::post('/logout', function () {Auth::logout();return redirect()->route('home');})->name('logout');
+=======
+Route::get('/prof', function () {return view('auth.prof');})->name('prof')->middleware('auth');
+>>>>>>> parent of 4c672f2 (add logout)
 
 
 Route::post('/post/{postId}/comment', [CommentController::class, 'store'])->name('comments.store');
