@@ -10,7 +10,7 @@
 /.phpunit.cache
 /.vscode
 /.zed
-/auth.json
+/auth.passwords.json
 /node_modules
 /public/build
 /public/hot

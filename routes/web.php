@@ -35,7 +35,7 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register'])->name('reg');
 
 
-Route::get('/prof', function () {return view('auth.prof');})->name('prof')->middleware('auth');
+Route::get('/prof', function () {return view('auth.passwords.prof');})->name('prof')->middleware('auth');
 Route::post('/logout', function () {Auth::logout();return redirect()->route('home');})->name('logout');
 
 
