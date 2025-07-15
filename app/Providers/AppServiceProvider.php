@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-// use Filament\Filament;
-// use App\Filament\Resources\CrtpostResource;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -14,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Register any services
+        //
     }
 
     /**
@@ -22,12 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Register resources to the Filament panel
-        // Filament::registerResources([
-        //     CrtpostResource::class,
-        // ]);
-
-        // Set the default string length for databases
-        Schema::defaultStringLength(191); 
+        Schema::defaultStringLength(191);  // محدود کردن طول پیش‌فرض به 191
     }
+
+
+
+
 }
+

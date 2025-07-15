@@ -43,9 +43,4 @@ class User extends Authenticatable // تغییر از Model به Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return str_ends_with($this->email, '1@1.com') && $this->hasVerifiedEmail();
-    // }
 }
